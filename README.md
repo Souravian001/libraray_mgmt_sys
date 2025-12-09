@@ -173,7 +173,7 @@ http-server
 ## Project Structure
 
 \`\`\`
-.
+
          ├── index.html              # Main HTML file
          ├── css/
          │   └── styles.css         # All CSS styles
