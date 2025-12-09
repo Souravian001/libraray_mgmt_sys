@@ -174,19 +174,19 @@ http-server
 
 \`\`\`
 .
-├── index.html              # Main HTML file
-├── css/
-│   └── styles.css         # All CSS styles
-├── js/
-│   ├── supabase-config.js # Supabase connection
-│   ├── auth.js            # Authentication logic
-│   ├── app.js             # Main app logic
-│   ├── maintenance.js     # Admin maintenance module
-│   ├── transactions.js    # Book transactions module
-│   └── reports.js         # Reports module
-├── database/
-│   └── schema.sql         # Database schema
-└── README.md              # This file
+         ├── index.html              # Main HTML file
+         ├── css/
+         │   └── styles.css         # All CSS styles
+         ├── js/
+         │   ├── supabase-config.js # Supabase connection
+         │   ├── auth.js            # Authentication logic
+         │   ├── app.js             # Main app logic
+         │   ├── maintenance.js     # Admin maintenance module
+         │   ├── transactions.js    # Book transactions module
+         │   └── reports.js         # Reports module
+         ├── database/
+         │   └── schema.sql         # Database schema
+         └── README.md              # This file
 \`\`\`
 
 ## Features
