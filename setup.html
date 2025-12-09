@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library System - Setup Helper</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .setup-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .setup-step {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .setup-step:last-child {
+      border-bottom: none;
+    }
+
+    .step-title {
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .step-number {
+      background: #667eea;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .step-content {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-left: 38px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+    }
+
+    .btn-secondary {
+      background: #e0e0e0;
+      color: #333;
+    }
+
+    .btn-secondary:hover {
+      background: #d0d0d0;
+    }
+
+    .link-text {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .link-text:hover {
+      text-decoration: underline;
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 15px;
+      display: none;
+      font-size: 13px;
+    }
+
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 15px;
+      display: none;
+      font-size: 13px;
+    }
+
+    .code-block {
+      background: #f5f5f5;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      overflow-x: auto;
+      margin-top: 10px;
+      border-left: 3px solid #667eea;
+    }
+
+    .checklist {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .checklist li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .checklist li:before {
+      content: "✓";
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .copy-btn {
+      background: #667eea;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+    .copy-btn:hover {
+      background: #5568d3;
+    }
+  </style>
+</head>
+<body>
+  <div class="setup-container">
+    <h1>Library Management System</h1>
+    <p class="subtitle">Quick Setup Helper</p>
+
+    <!-- Step 1 -->
+    <div class="setup-step">
+      <div class="step-title">
+        <div class="step-number">1</div>
+        Create Supabase Account & Project
+      </div>
+      <div class="step-content">
+        <p>Visit <a href="https://supabase.com" target="_blank" class="link-text">supabase.com</a> and create a free account. Then create a new project.</p>
+        <ul class="checklist">
+          <li>Sign up for Supabase</li>
+          <li>Create a new project</li>
+          <li>Wait for initialization (2-3 minutes)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="setup-step">
+      <div class="step-title">
+        <div class="step-number">2</div>
+        Get Your API Credentials
+      </div>
+      <div class="step-content">
+        <p>Go to Settings → API and copy your credentials:</p>
+        <div class="form-group">
+          <label>Supabase URL:</label>
+          <input type="text" id="supabase-url" placeholder="https://your-project.supabase.co">
+        </div>
+        <div class="form-group">
+          <label>Supabase Anon Key:</label>
+          <input type="text" id="supabase-key" placeholder="eyJhbGciOiJIUzI1NiIs...">
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="setup-step">
+      <div class="step-title">
+        <div class="step-number">3</div>
+        Create Database Schema
+      </div>
+      <div class="step-content">
+        <p>In Supabase, go to SQL Editor → New Query and paste the schema:</p>
+        <button class="link-text" onclick="loadSchemaPreview()">Click here to see the SQL schema</button>
+        <div id="schema-preview" style="display:none; margin-top: 10px;">
+          <div class="code-block" id="schema-code" style="max-height: 300px; overflow-y: auto;"></div>
+          <button class="copy-btn" onclick="copySchema()">Copy SQL</button>
+          <button class="copy-btn" onclick="window.open('https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs', '_blank')">Open Supabase Docs</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="setup-step">
+      <div class="step-title">
+        <div class="step-number">4</div>
+        Configure & Launch
+      </div>
+      <div class="step-content">
+        <p>Save your credentials and launch the application:</p>
+        <div class="button-group">
+          <button class="btn-primary" onclick="saveCredentials()">Save Credentials</button>
+          <button class="btn-secondary" onclick="launchApp()">Launch App</button>
+        </div>
+        <div class="success-message" id="success-msg">Credentials saved! Redirecting to app...</div>
+        <div class="error-message" id="error-msg"></div>
+      </div>
+    </div>
+
+    <!-- Additional Help -->
+    <div class="setup-step" style="border-bottom: none;">
+      <div class="step-title">
+        <div class="step-number">?</div>
+        Need Help?
+      </div>
+      <div class="step-content">
+        <p>Check the <a href="README.md" class="link-text">README.md</a> file for detailed setup instructions and troubleshooting.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load schema from file
+    async function loadSchemaPreview() {
+      try {
+        const response = await fetch('database/schema.sql')
+        const schema = await response.text()
+        document.getElementById('schema-code').textContent = schema
+        document.getElementById('schema-preview').style.display = 'block'
+      } catch (error) {
+        document.getElementById('error-msg').textContent = 'Error loading schema: ' + error.message
+        document.getElementById('error-msg').style.display = 'block'
+      }
+    }
+
+    // Copy schema to clipboard
+    function copySchema() {
+      const schema = document.getElementById('schema-code').textContent
+      navigator.clipboard.writeText(schema).then(() => {
+        alert('Schema copied to clipboard!')
+      })
+    }
+
+    // Save credentials
+    function saveCredentials() {
+      const url = document.getElementById('supabase-url').value.trim()
+      const key = document.getElementById('supabase-key').value.trim()
+
+      if (!url || !key) {
+        document.getElementById('error-msg').textContent = 'Please fill in both URL and Key'
+        document.getElementById('error-msg').style.display = 'block'
+        return
+      }
+
+      localStorage.setItem('supabase_url', url)
+      localStorage.setItem('supabase_key', key)
+
+      document.getElementById('success-msg').style.display = 'block'
+      setTimeout(() => {
+        document.getElementById('success-msg').style.display = 'none'
+      }, 3000)
+    }
+
+    // Launch app
+    function launchApp() {
+      window.location.href = 'index.html'
+    }
+
+    // Auto-load saved credentials
+    window.addEventListener('load', () => {
+      const savedUrl = localStorage.getItem('supabase_url')
+      const savedKey = localStorage.getItem('supabase_key')
+
+      if (savedUrl) document.getElementById('supabase-url').value = savedUrl
+      if (savedKey) document.getElementById('supabase-key').value = savedKey
+    })
+  </script>
+</body>
+</html>
