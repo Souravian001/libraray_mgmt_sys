@@ -241,9 +241,9 @@
 
                 if (data.success) {
                     if (data.fineAmount > 0) {
-                        alert(`⚠️ OVERDUE WARNING!\nFine Amount: $${data.fineAmount}`);
+                        alert(`OVERDUE WARNING!\nFine Amount: $${data.fineAmount}`);
                     } else {
-                        alert("✅ Book returned successfully. No fine.");
+                        alert(" Book returned successfully. No fine.");
                     }
                     getBooks(); // Refresh stock
                     document.getElementById('returnBookId').value = '';
@@ -258,4 +258,5 @@
     </script>
     
 </body>
+
 </html>
