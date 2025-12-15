@@ -12,7 +12,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',      // YOUR MySQL username (usually root)
-    password: 'NewStrong@123',      // YOUR MySQL password
+    password: 'passwa**',      // Give your MySQL password to connect with local db
     database: 'library_db'
 });
 
@@ -143,4 +143,5 @@ app.post('/return-book', (req, res) => {
 // 4. Start Server
 app.listen(3000, () => {
     console.log("Server running on port 3000");
+
 });
