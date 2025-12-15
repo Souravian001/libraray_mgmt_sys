@@ -86,15 +86,21 @@ INSERT INTO users (username, password, role) VALUES ('staff', 'staff123', 'user'
 
 
 ```
-## Navigate to the backend folder and install dependencies:
+### Navigate to the backend folder and install dependencies:
 cd backend
+
 npm init -y
+
 npm install express mysql2 cors body-parser
+
 node server.js // start the server
+
 // after this you will see Server running on port 3000
+
 //then simply open the frontend/index.html file in any web browser.
 
-               LibrarySystem/
+               LibrarySystem/             (libraray_mgmt_sys)
+
                ├── backend/
                │   ├── server.js         # API Logic & Database Connection
                │   └── package.json      # Dependencies
