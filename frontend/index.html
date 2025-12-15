@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Library Login</h2>
+        <input type="text" id="username" placeholder="Username (e.g., admin)">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="error-msg" style="color: red; display: none;">Invalid Credentials</p>
+    </div>
+
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Send login request to your Node server
+                const response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // 1. Save the Role (Admin/User) to memory
+                    localStorage.setItem('userRole', data.role);
+                    localStorage.setItem('username', username);
+                    
+                    // 2. Go to the Dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    document.getElementById('error-msg').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert("Could not connect to server. Is it running?");
+            }
+        }
+    </script>
+</body>
+</html>
